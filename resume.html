@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Image Uploader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="next">Next</button>
+    <div class="image-container">
+    <img id="uploaded-image" src="" alt="Uploaded Image Website" >
+    </div>
+    <input type="file" id="file-input">
+  <!-- //  <button id="upload-button">Upload Image</button> -->
+    <div class="image-list">
+        <!-- Here, we will display the list of uploaded images -->
+    </div>
+   
+<!-- Describes additional information, usually about formatting -->
+<span id="date-format">Name:</span>
+<input type="text" id="date" />
+<label for="date"></label>
+<!-- Describes additional information, usually about formatting -->
+<span id="date-format">Job:</span>
+<input type="text" id="date"  />
+<label for="date"></label>
+<!-- Describes additional information, usually about formatting -->
+<span id="date-format">Age:</span>
+<input type="text" id="date"  />
+
+    <script >
+        
+const myButton = document.getElementById("next");
+myButton.addEventListener("click",function(event){
+    event.preventDefault;
+                window.location.href = "table.html";
+})
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('file-input');
+    const uploadButton = document.getElementById('upload-button');
+    const imageContainer = document.getElementById('uploaded-image');
+    const imageList = document.querySelector('.image-list');
+
+    // Function to get the current date and time in a formatted string
+    function getCurrentDateTime() {
+        const now = new Date();
+        const formattedDate = now.toLocaleDateString();
+        const formattedTime = now.toLocaleTimeString();
+        return formattedDate + " " + formattedTime;
+    }
+
+    // Add an event listener to the file input to handle image selection
+    fileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const imageURL = URL.createObjectURL(file);
+            imageContainer.src = imageURL;
+
+            // Create a new list item for the image with date and file path
+         //   const listItem = document.createElement('li');
+            // listItem.innerHTML = `
+            //     <img src="${imageURL}" ">
+            //     <p>Date: ${getCurrentDateTime()}</p>
+            //     <p>File Path: ${file.name}</p>
+            // `;
+
+            // //this is a list of images, and appendchild to make sure previous image does not go away
+            // imageList.appendChild(listItem);
+        }
+    });
+
+    // Add an event listener to the upload button to append the uploaded image to the image list
+    // uploadButton.addEventListener('click', function () {
+    //     const clonedImage = imageContainer.cloneNode(true);
+    //     clonedImage.removeAttribute('id');
+    //     imageList.appendChild(clonedImage);
+    // });
+});
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table with Search and Add</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    
+    <h1>Table with Search and Add</h1>
+    
+    <input type="text" id="nameInput" placeholder="Enter a list that you want to do">
+    <button onclick="addName()">Add</button>
+    <button id ="logout"> log out</button>
+    <button id ="prev"> previous</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody id="nameList">
+            <!-- Names will be added here dynamically using JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+            const prev = document.getElementById("prev");
+        prev.addEventListener("click",function(event){
+                event.preventDefault;
+                window.location.href = "resume.html";
+
+            });
+
+
+
+           const button = document.getElementById("logout");
+        button.addEventListener("click",function(event){
+                event.preventDefault;
+                window.location.href = "index.html";
+
+            });
+        function addName() { //THIS FUNCTION WILL GET CALLED FROM ABOVE, that is why log out does not work
+            //untill add table
+            const nameInput = document.getElementById("nameInput");
+            const name = nameInput.value; // Get the text from the input field
+         
+            
+            if (name !== "") {
+                const tableBody = document.getElementById("nameList");
+                const row = document.createElement("tr");
+                const cell = document.createElement("td");
+                cell.textContent = name;
+                row.appendChild(cell);
+                tableBody.appendChild(row);
+                
+                // Clear the input field
+                nameInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
